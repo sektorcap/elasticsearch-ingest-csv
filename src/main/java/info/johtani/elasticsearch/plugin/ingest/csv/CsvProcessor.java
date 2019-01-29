@@ -56,7 +56,7 @@ public class CsvProcessor extends AbstractProcessor {
     }
 
     @Override
-    public void execute(IngestDocument ingestDocument) throws Exception {
+    public IngestDocument execute(IngestDocument ingestDocument) throws Exception {
         String content = ingestDocument.getFieldValue(field, String.class);
 
         if (!Strings.hasLength(content)) {
@@ -93,6 +93,7 @@ public class CsvProcessor extends AbstractProcessor {
                 }
             }
         }
+        return ingestDocument;
     }
 
     @Override
@@ -115,7 +116,7 @@ public class CsvProcessor extends AbstractProcessor {
     public static final class Factory implements Processor.Factory {
 
         @Override
-        public CsvProcessor create(Map<String, Processor.Factory> factories, String tag, Map<String, Object> config) 
+        public CsvProcessor create(Map<String, Processor.Factory> factories, String tag, Map<String, Object> config)
             throws Exception {
             String field = readStringProperty(TYPE, tag, config, "field");
             Map<String, List<String>> columns = readMap( TYPE, tag, config, "columns");
