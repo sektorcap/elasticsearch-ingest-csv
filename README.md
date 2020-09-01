@@ -3,6 +3,10 @@
 This processor can parse CSV data and stores it as individual fields.
 This filter can also parse data with any separator, not just commas.
 
+**Elastic introduced in the version 7.6 an official 
+[CSV processor](https://www.elastic.co/guide/en/elasticsearch/reference/master/csv-processor.html)
+for this reason I will not maintain anymore this project.**
+
 ## Fork contribution
 
 In this version the processor handles multiple patterns: it will consider the first one matching.
